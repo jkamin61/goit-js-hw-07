@@ -10,16 +10,9 @@ for (const image of galleryItems) {
     img.classList.add("gallery__item","gallery__image", "gallery__link");
 }
 
-const makeBiggerImage = (event) => {
- if (event.target.nodeName !== "IMG") {
-     return;
- } else {
-
- }
-
-
-};
-parent.addEventListener("click", makeBiggerImage);
-
-
-
+parent.addEventListener("click", () => {
+    const instance = basicLightbox.create(`
+    <img src="">
+`)
+    instance.show()
+});
