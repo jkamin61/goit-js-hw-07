@@ -1,18 +1,28 @@
-
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const parent = document.querySelector(".gallery");
+const gallery = document.querySelector(".gallery");
 
-for (const image of galleryItems) {
-    let img = document.createElement("img");
-    parent.append(img);
-    img.insertAdjacentHTML("beforeend", img.src = image.preview, img.alt = image.description, img.width = "360", img.height = "240");
-    img.classList.add("gallery__item","gallery__image", "gallery__link");
+for (const item of galleryItems) {
+    //creating link tag, adding class and attribute
+    let photoLink = document.createElement("a");
+    gallery.append(photoLink);
+    photoLink.classList.add("gallery__link");
+    // photoLink.setAttribute("href", item.original)
+    //creating img tag, adding class and attributes
+    let imageTag = document.createElement("img");
+    photoLink.append(imageTag);
+    imageTag.classList.add("gallery__image");
+    imageTag.setAttribute("src", item.preview);
+    imageTag.setAttribute("data-source", item.original);
+    imageTag.setAttribute("alt", item.description);
+    //adding event listener and lightbox
+    const instance = basicLightbox.create(`
+    <img>
+`)
+
+    imageTag.addEventListener("click", () => {
+        instance.show();
+    })
+
 }
 
-parent.addEventListener("click", () => {
-    const instance = basicLightbox.create(`
-    <img src="">
-`)
-    instance.show()
-});
