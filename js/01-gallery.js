@@ -30,4 +30,3 @@ for (const item of galleryItems) {
 
 }
 
-// Investigate "dataset.source" att..
